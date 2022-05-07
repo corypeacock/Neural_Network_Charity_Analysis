@@ -32,6 +32,7 @@ various columns from one column with several unique values to a series of
 columns with true/false value options. This last process is done for the sake of
 the machine learning model's data requirements.
 
+### Data Preprocessing
 * Drop unneeded columns as they are neither targets nor features:   
 ![dropcols](images/dropcols.png)  
 
@@ -55,7 +56,7 @@ the machine learning model's data requirements.
 * Additionally, the dataset is split for training and testing the model:  
 ![traintest](images/traintest.png)  
 
-### Data Preprocessing
+### Compiling, Training, and Evaluating the Model
 * The neural network binary classifier was trained with two hidden layers of 80 and 30 neurons respectively, using 'relu' activation. The output layer used 'sigmoid' activation.  
 ![model](images/model.png)  
 
@@ -68,10 +69,53 @@ the machine learning model's data requirements.
 * which resulted in an accuracy of 73%:  
 ![original](images/original.png)  
 
+## Attempts to Improve Model Accuracy
+The following three attempts were made to improve the model's accuracy above
+73%.  
 
+### Attempt 1  
+* Add a hidden layer:   
+![att1](images/att1.png)  
 
-### Compiling, Training, and Evaluating the Model
-Lorem ipsum
+* Attempt 1 results resulted in an insignificant improvement.  
+![att1results](images/att1results.png)  
+
+### Attempt 1b  
+* Since attempt 1 was marginally successful, neurons were added to each hidden layer.  
+![att1b](images/att1b.png)  
+
+* The results of this attempt did not improve upon the original model or attempt 1.  
+![att1bresults.png](images/att1bresults.png)  
+
+### Attempt 2  
+* Returning to the original number of hidden layers and neurons, this attempt dropped additional columns as potentially unnecessary.  
+![att2](images/att2.png)  
+
+* The results of attempt 2 were worse than the original and attempt 1 & 1b.  
+![att2results](images/att2results.png)  
+
+### Attempt 3  
+* Using the original model's baseline, this attempt changed the number of instances per value that were binned.  
+![att3](images/att3.png)  
+![att3b](images/att3b.png)  
+
+* The results were marginally worse than the original model, achieving 72.5%
+accuracy.  
+![att3results](images/att3results.png)  
 
 ## Summary
-Lorem ipsum
+This neural network model achieved 73% accuracy with the initial configuration.
+While admirable, a higher accruacy rate would be desirable. Three attempts were
+made to improve the model using, in isolation, increasing the number of hidden
+layers, increasing the neurons per layer, removing features from the model, and
+changing the number of instances at which a value was binned. Only increasing
+the number of hidden layers improved upon the original, though did not improve
+the model significantly.  
+
+There are several options for improving the model. One option would be to use
+the techniques mentioned above but in combination. Perhaps this would increase
+the accuracy above 75%, but that is yet to be determined. A second option would
+be to increase the size of the training dataset. Additional data would likely
+give the model more opportunity to learn and thereby increase the accuracy. A
+third option would be to use a different binary classifier, such as the Random
+Forest Classifier.
